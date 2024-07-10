@@ -19,7 +19,7 @@ const Row = ({ title, fetchUrl }) => {
 
   useEffect(() => {
     fetchMovies();
-  }, [fetchUrl]);
+  });
 
   const scrollLeft = () => {
     if (scrollRef.current) {

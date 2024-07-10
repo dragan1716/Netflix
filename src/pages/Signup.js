@@ -10,6 +10,8 @@ const Signup = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
+  console.log(user);
+
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };

@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const Movie = ({ movie }) => {
   const [liked, setLiked] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const { user } = UserAuth();
 
-  const handleLikeClick = () => {
-    const likedMovies = JSON.parse(localStorage.getItem("likedMovies")) || [];
-    let updatedLikedMovies;
+  const movieID = doc(db, "users", `${user?.email}`);
 
-    if (liked) {
-      updatedLikedMovies = likedMovies.filter(
-        (likedMovie) => likedMovie.id !== movie.id
-      );
+  const saveMovie = async () => {
+    if (user?.email) {
+      setLiked(true);
+      setSaved(true);
+      await updateDoc(movieID, {
+        savedMovies: arrayUnion({
+          id: movie.id,
+          title: movie.title,
+          img: movie.backdrop_path,
+        }),
+      });
     } else {
-      const { id, title } = movie;
-      updatedLikedMovies = [...likedMovies, { id, title }];
+      alert("Please log in to save movies!");
     }
-
-    localStorage.setItem("likedMovies", JSON.stringify(updatedLikedMovies));
-    setLiked(!liked);
   };
 
   useEffect(() => {
@@ -40,7 +46,7 @@ const Movie = ({ movie }) => {
         <p className="whitespace-normal flex justify-center items-center font-bold px-2 h-full w-full top-[40%] text-center break-words">
           {movie?.title}
         </p>
-        <div onClick={handleLikeClick} className="absolute top-4 left-4">
+        <div onClick={saveMovie} className="absolute top-4 left-4">
           {liked ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
         </div>
       </div>

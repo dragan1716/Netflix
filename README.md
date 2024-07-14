@@ -1,4 +1,4 @@
-This is working version of app: https://testnetflix2.netlify.app/
+This is working version of app: https://netflix2.netlify.app/
 
 # Getting Started with Create React App
 

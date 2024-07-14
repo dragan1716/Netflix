@@ -1,7 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { user, logIn } = UserAuth();
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  console.log(user);
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      await logIn(email, password);
+      navigate("/");
+      console.log("successfully logged in");
+      setErrorMessage("");
+    } catch (error) {
+      console.log(error.message);
+      setErrorMessage("Invalid email or password, please try again!");
+      setEmail("");
+      setPassword("");
+    }
+  };
+
   return (
     <>
       <div className="w-full h-screen">
@@ -11,18 +42,22 @@ const Login = () => {
           alt="signImage"
         />
         <div className="bg-black/60 absolute fixed-top top-0 left-0 w-full h-screen"></div>
-        <div className="fixed w-full px-4 py-24 z-50">
+        <div className="fixed w-full px-4 py-24 z-30">
           <div className="max-w-[450px] h-[600px] bg-black/75 mx-auto text-white">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-4xl font-bold">Sign In</h1>
-              <form className="mt-6">
+              <form onSubmit={handleLogin} className="mt-6">
                 <input
-                  type="text"
+                  onChange={handleEmail}
+                  value={email}
+                  type="email"
                   placeholder="Email"
                   className="w-full  rounded bg-gray-700 p-2 my-2"
                 />
                 <input
-                  type="text"
+                  onChange={handlePassword}
+                  value={password}
+                  type="password"
                   placeholder="Password"
                   className="w-full rounded bg-gray-700 p-2 my-2"
                 />
@@ -40,6 +75,9 @@ const Login = () => {
                   <span className="text-white font-bold">
                     <Link to="/signup">Sign Up</Link>
                   </span>
+                </p>
+                <p className="text-red-500 font-bold text-2xl">
+                  {errorMessage}
                 </p>
               </form>
             </div>

@@ -13,6 +13,8 @@ const Signup = () => {
   const [debouncedEmailValue, setDebouncedEmailValue] = useState("");
   const [debouncedPasswordValue, setDebouncedPasswordValue] = useState("");
 
+  console.log(user, debouncedEmailValue, debouncedPasswordValue);
+
   const handleEmail = (event) => {
     setEmail(event.target.value);
     console.log(email);

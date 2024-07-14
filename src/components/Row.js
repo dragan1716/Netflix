@@ -19,7 +19,7 @@ const Row = ({ title, fetchUrl }) => {
 
   useEffect(() => {
     fetchMovies();
-  });
+  }, [fetchUrl]);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -27,7 +27,6 @@ const Row = ({ title, fetchUrl }) => {
     }
   };
 
-  // Korak 2: Funkcija za skrolovanje desno
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 400, behavior: "smooth" });

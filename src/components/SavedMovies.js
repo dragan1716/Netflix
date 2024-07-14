@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";

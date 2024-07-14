@@ -7,17 +7,30 @@ const Row = ({ title, fetchUrl }) => {
   const [movies, setMovies] = useState([]);
   const scrollRef = useRef(null);
 
-  const fetchMovies = async () => {
-    try {
-      await axios.get(fetchUrl).then((response) => {
-        setMovies(response.data.results);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchMovies = async () => {
+  //   try {
+  //     await axios.get(fetchUrl).then((response) => {
+  //       setMovies(response.data.results);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchMovies();
+  // }, [fetchUrl]);
 
   useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(fetchUrl);
+        setMovies(response.data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchMovies();
   }, [fetchUrl]);
 

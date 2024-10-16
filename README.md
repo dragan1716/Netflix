@@ -30,8 +30,6 @@ How to Use
 - Favorites: Add or remove movies from your favorite list.
 - Manage Profile: Update your profile settings, and log out when done.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 
 

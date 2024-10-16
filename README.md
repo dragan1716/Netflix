@@ -11,10 +11,7 @@ Features
 
 Tech Stack
 - Frontend: React.js, HTML5, CSS3
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Authentication: JWT (JSON Web Tokens) for secure login and session management
-- Deployment: Deployed using Heroku (or another platform if used)
+- Database: Firebase
 - Installation and Setup
 
 Installation and Setup

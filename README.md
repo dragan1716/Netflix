@@ -37,17 +37,17 @@ The application should now be running at http://localhost:3000.
 
 ## 📖 How to Use
 1. **Register**
-- Create an account by signing up with your email and password.
+   - Create an account by signing up with your email and password.
 2. **Log In**
-- Access your account using your credentials.
+   - Access your account using your credentials.
 3. **Browse Movies**
-- Explore a wide selection of movies in the catalog or search for specific titles.
+   - Explore a wide selection of movies in the catalog or search for specific titles.
 4. **Manage Favorites**
--  Add movies to your favorites list.
-- View and manage your favorite movies in one place.
+   -  Add movies to your favorites list.
+   - View and manage your favorite movies in one place.
 5. **Profile Management**
-- Personalize your experience by managing your profile settings.
-- Log out securely when done.
+   - Personalize your experience by managing your profile settings.
+   - Log out securely when done.
 
 
 

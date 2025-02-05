@@ -1,6 +1,6 @@
 # Netflix Clone Project 🎥
 
-## This is working version of app: https://moviesprojectapp.netlify.app/
+## Live Demo: https://moviesprojectapp.netlify.app/
 
 This project is a **Netflix Clone**, built using modern web technologies to replicate the core features of Netflix. It allows users to create accounts, browse movies, add favorites, and manage their profiles. Designed with a responsive interface, the app works seamlessly across all devices, ensuring a smooth user experience.
 
